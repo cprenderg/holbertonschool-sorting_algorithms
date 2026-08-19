@@ -10,6 +10,10 @@ void move_dnode_forward(listint_t **head, listint_t *node)
 {
 	listint_t *temp;
 
+	if (node == NULL || node->next == NULL)
+	{
+		return;
+	}
 	temp = node->next->next;
 	node->next->next = node;
 	if (node->prev != NULL)
@@ -29,7 +33,7 @@ void move_dnode_forward(listint_t **head, listint_t *node)
 	}
 }
 /**
- * move_dnode_backward - moves a node forward at a given position
+ * move_dnode_backward - moves a node backward at a given position
  * @head: head of list
  * @node: node to move
  *
@@ -39,6 +43,10 @@ void move_dnode_backward(listint_t **head, listint_t *node)
 {
 	listint_t *temp;
 
+	if (node == NULL || node->prev == NULL)
+	{
+		return;
+	}
 	temp = node->prev->prev;
 	node->prev->prev = node;
 	node->prev->next = node->next;
