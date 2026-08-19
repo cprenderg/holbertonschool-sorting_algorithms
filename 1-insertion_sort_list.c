@@ -14,22 +14,23 @@ void move_dnode_forward(listint_t **head, listint_t *node)
 	{
 		return;
 	}
-	temp = node->next->next;
-	node->next->next = node;
+	temp = node->next;
+	node->next = temp->next;
 	if (node->prev != NULL)
 	{
-		node->next->prev = node->prev;
-		node->prev->next = node->next;
+		node->prev->next = temp;
+		temp->prev = node->prev;
 	}
 	else
 	{
-		*head = node->next;
+		*head = temp;
+		temp->prev = NULL;
 	}
-	node->prev = node->next;
-	node->next = temp;
-	if (temp != NULL)
+	temp->next = node;
+	node->prev = temp;
+	if (node->next != NULL)
 	{
-		temp->prev = node;
+		node->next->prev = node;
 	}
 }
 /**
