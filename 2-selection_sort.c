@@ -1,5 +1,21 @@
 #include "sort.h"
 /**
+ * arr_swap - swaps two positions in an array
+ * @a: first index
+ * @b: second index
+ * @arr: pointer to array
+ * 
+ * Return: void
+ */
+void arr_swap(int a, int b, int *arr)
+{
+	int temp;
+
+	temp = arr[a];
+	arr[a] = arr[b];
+	arr[b] = temp;
+}
+/**
  * selection_sort - selection sorts an array of integers in ascending order
  * @array: array to sort
  * @size: size of array
@@ -10,26 +26,26 @@ void selection_sort(int *array, size_t size)
 {
 	int i;
 	int tracker;
-	int lowest;
-	int temp;
+	int min;
 
 	tracker = 0;
 	while (tracker < (int)size)
 	{
 		i = tracker;
-		lowest = tracker;
+		min = tracker;
 		while (i < (int)size)
 		{
-			if (array[i] < array[lowest])
+			if (array[i] < array[min])
 			{
-				lowest = i;
+				min = i;
 			}
 			i++;
 		}
-		temp = array[lowest];
-		array[lowest] = array[tracker];
-		array[tracker] = temp;
-		print_array(array, size);
+		if (min != tracker)
+		{
+			arr_swap(tracker, min, array);
+			print_array(array, size);
+		}
 		tracker++;
 	}
 }
