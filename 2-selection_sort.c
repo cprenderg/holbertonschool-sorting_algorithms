@@ -4,7 +4,7 @@
  * @a: first index
  * @b: second index
  * @arr: pointer to array
- * 
+ *
  * Return: void
  */
 void arr_swap(int a, int b, int *arr)
