@@ -19,6 +19,8 @@ void arr_swap(int a, int b, int *arr)
  * rquick_sort - recursive helper function for quick sort
  * @array: array to quick sort
  * @size: size of array
+ * @start_index: index to start sorting from
+ * @pivot_index: index of pivot
  *
  * Return: void
  */
@@ -48,7 +50,7 @@ void rquick_sort(size_t size, int *array, int start_index, int pivot_index)
 		}
 		i++;
 	}
-	if (j != pivot)
+	if (array[j] != array[pivot])
 	{
 		arr_swap(j, pivot, array);
 		print_array(array, size);
@@ -57,9 +59,9 @@ void rquick_sort(size_t size, int *array, int start_index, int pivot_index)
 	{
 		rquick_sort(size, array, j + 1, pivot);
 	}
-	if (j - 1 > 1)
+	if (j - start_index > 1)
 	{
-		rquick_sort(size, array, 0, j - 1);
+		rquick_sort(size, array, start_index, j - 1);
 	}
 }
 /**
