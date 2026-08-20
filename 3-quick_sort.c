@@ -55,13 +55,13 @@ void rquick_sort(size_t size, int *array, int start_index, int pivot_index)
 		arr_swap(j, pivot, array);
 		print_array(array, size);
 	}
-	if (pivot - j > 1)
-	{
-		rquick_sort(size, array, j + 1, pivot);
-	}
 	if (j - start_index > 1)
 	{
 		rquick_sort(size, array, start_index, j - 1);
+	}
+	if (pivot - j > 1)
+	{
+		rquick_sort(size, array, j + 1, pivot);
 	}
 }
 /**
